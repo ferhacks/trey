@@ -1091,7 +1091,7 @@ module.exports = kconfig = async (kill, message) => {
 
 
         case 'nsfw':
-       	    const isGroupOwner = sender.id === chat.groupMetadata.owner
+       	      if (!isGroupAdmins) return aruga.reply(from, 'Hey, se que la quieres jalar pero no eres admin', id)
             if (args.length !== 1) return kill.reply(from, 'Establecer habilitar o deshabilitar', id)
 			if (isGroupMsg) {
 				if (args[0].toLowerCase() == 'enable') {
