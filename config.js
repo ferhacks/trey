@@ -932,26 +932,18 @@ module.exports = kconfig = async (kill, message) => {
                 .catch(() => kill.sendText(from, 'An error occured!'))
             break
 
-        case 'tts': // Esse é enormeeeee, fazer o que, sou baiano pra jogar noutro js
-            if (args.length == 0) return kill.reply(from, 'Wrong Fromat!')
-                const ttsEn = require('node-gtts')('en')
-	        const ttsJp = require('node-gtts')('ja')
+        case 'tts':
+            if (args.length == 0) return aruga.reply(from, `Mengubah teks menjadi sound (google voice)\nketik: ${prefix}tts <kode_bahasa> <teks>\ncontoh : ${prefix}tts id halo\nuntuk kode bahasa cek disini : https://anotepad.com/note/read/5xqahdy8`)
+            const ttsGB = require('node-gtts')(args[0])
             const dataText = body.slice(8)
-            if (dataText === '') return kill.reply(from, 'Baka?', message.id)
-            if (dataText.length > 250) return kill.reply(from, 'Unable to convert', message.id)
-            var dataBhs = body.slice(5, 7)
-	        if (dataBhs == 'id') {
-		    } else if (dataBhs == 'en') {
-                ttsEn.save('./tts/resEn.mp3', dataText, function () {
-                    kill.sendPtt(from, './media/tts/resEn.mp3', message.id)
-                })
-		    } else if (dataBhs == 'jp') {
-                ttsJp.save('./tts/resJp.mp3', dataText, function () {
-                    kill.sendPtt(from, './media/tts/resJp.mp3', message.id)
-                })
-		    } else {
-		        kill.reply(from, 'Currently only English and Japanese are supported!', message.id)
-            }
+                if (dataText === '') return aruga.reply(from, 'apa teksnya syg..', id)
+                try {
+                    ttsGB.save('./media/tts.mp3', dataText, function () {
+                    aruga.sendPtt(from, './media/tts.mp3', id)
+                    })
+                } catch (err) {
+                    aruga.reply(from, err, id)
+                }
             break
 
         case 'idiomas':
