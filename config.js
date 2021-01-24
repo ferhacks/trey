@@ -1032,15 +1032,15 @@ module.exports = kconfig = async (kill, message) => {
 
 			case 'speed':
                 case 'ping':
-                    const loadedMsg = await aruga.getAmountOfLoadedMessages()
-                    const chatIds = await aruga.getAllChatIds()
-                    const groups = await aruga.getAllGroups()
+                    const loadedMsg = await kill.getAmountOfLoadedMessages()
+                    const chatIds = await kill.getAllChatIds()
+                    const groups = await kill.getAllGroups()
                     const timestamp = speed();
                     const latensi = speed() - timestamp
-                    const charged = await aruga.getIsPlugged();
-                    const device = await aruga.getMe() 
+                    const charged = await kill.getIsPlugged();
+                    const device = await kill.getMe() 
                     const deviceinfo = `- Bateria del host : ${device.battery}%\n  ├ ¿Esta cargando? : ${charged}\n  └ ¿24 Horas vivo? : ${device.is24h}\n  ├ ¿Android? : ${device.phone.os_version}\n  └ Build Number : ${device.phone.os_build_number}\n\n _*Hora del servidor :*_ ${moment(t * 1000).format('HH:mm:ss')}`
-                    aruga.sendText(from, `*Dispositivo del host*\n${deviceinfo}\n\nCuanta ram estoy usando: *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*\nCPU: *${os.cpus().length}*\n\nInformacion :\n- *${loadedMsg}* Mensajes totales\n- *${groups.length}* Grupos:\n- *${chatIds.length - groups.length}* Chats privados\n- *${chatIds.length}* Total de chats\n\nVelocidad: ${processTime(t, moment())} _Second_`)
+                    kill.sendText(from, `*Dispositivo del host*\n${deviceinfo}\n\nCuanta ram estoy usando: *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*\nCPU: *${os.cpus().length}*\n\nInformacion :\n- *${loadedMsg}* Mensajes totales\n- *${groups.length}* Grupos:\n- *${chatIds.length - groups.length}* Chats privados\n- *${chatIds.length}* Total de chats\n\nVelocidad: ${processTime(t, moment())} _Second_`)
 					break
 					
         case 'criador':
