@@ -4,6 +4,10 @@
   "private": "true",
   "description": "BOT avançada do Legião Z!",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Erro ao iniciar\" && exit 1"
