@@ -294,7 +294,7 @@ module.exports = kconfig = async (kill, message) => {
                     var base64img = imageBase64
                     var outFile = './media/img/noBg.png'
                     // untuk api key kalian bisa dapatkan pada website remove.bg
-                    var result = await removeBackgroundFromImageBase64({ base64img, apiKey: 'API-KEY', size: 'auto', type: 'auto', outFile })
+                    var result = await removeBackgroundFromImageBase64({ base64img, apiKey: 'HRkFv6SD7Hu9DryKuJ8ErLdw', size: 'auto', type: 'auto', outFile })
                     await fs.writeFile(outFile, result.base64img)
                     await client.sendImageAsSticker(from, `data:${mimetype};base64,${result.base64img}`)
                 } catch(err) {
