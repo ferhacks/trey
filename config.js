@@ -1035,8 +1035,6 @@ module.exports = kconfig = async (kill, message) => {
                     const loadedMsg = await kill.getAmountOfLoadedMessages()
                     const chatIds = await kill.getAllChatIds()
                     const groups = await kill.getAllGroups()
-                    const timestamp = speed();
-                    const latensi = speed() - timestamp
                     const charged = await kill.getIsPlugged();
                     const device = await kill.getMe() 
                     const deviceinfo = `- Bateria del host : ${device.battery}%\n  ├ ¿Esta cargando? : ${charged}\n  └ ¿24 Horas vivo? : ${device.is24h}\n  ├ ¿Android? : ${device.phone.os_version}\n  └ Build Number : ${device.phone.os_build_number}\n\n _*Hora del servidor :*_ ${moment(t * 1000).format('HH:mm:ss')}`
