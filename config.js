@@ -1761,13 +1761,13 @@ module.exports = kconfig = async (kill, message) => {
             break
 
 
-        case 'botstat':
+        case 'botstat': {
             const loadedMsg = await kill.getAmountOfLoadedMessages()
             const chatIds = await kill.getAllChatIds()
             const groups = await kill.getAllGroups()
             kill.sendText(from, `Status :\n- *${loadedMsg}* Mensajes recibidos después de llamar\n- *${groups.length}* Conversaciones en grupo\n- *${chatIds.length - groups.length}* Conversaciones en PV\n- *${chatIds.length}* Total de conversaciones`)
             break
-
+		}
 
         case 'join':
             if (args.length == 0) return kill.reply(from, 'Ay algo mal en esto!', id)
