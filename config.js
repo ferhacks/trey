@@ -1633,7 +1633,7 @@ module.exports = kconfig = async (kill, message) => {
 	case '3d':
 		if (args.length == 0) kill.reply(from, 'Pon un mensaje ahí!', id)
 		kill.reply(from, mess.wait, id)
-		await kill.sendFileFromUrl(from, `https://docs-jojo.herokuapp.com/api/text3d?text=${body.slice(4)}`, '', '', id)
+		await kill.sendFileFromUrl(from, `https://arugaz.my.id/api/textpro/text3d?text=${body.slice(4)}`, '', '', id)
 		break 
 		
 		
