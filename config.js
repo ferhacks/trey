@@ -840,7 +840,7 @@ module.exports = kconfig = async (kill, message) => {
 
         case 'play':
             if (args.length == 0) return kill.reply(from, 'Lo usaste incorrectamentee.', id)
-            axios.get(`http://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
+            axios.get(`https://arugaz.my.id/api/media/ytsearch?query=${body.slice(6)}`)
             .then(async (res) => {
                 if (res.data[0].uploadDate.endsWith('years ago')) {
                     var playre = res.data[0].uploadDate.replace('years ago', 'Años atrás')
@@ -859,7 +859,7 @@ module.exports = kconfig = async (kill, message) => {
 				} else if (res.data[0].uploadDate.endsWith('null')) {
                     var videore = res.data[0].uploadDate.replace('null', 'Indefinido')
 				}
-				const asize = await axios.get(`http://st4rz.herokuapp.com/api/yta?url=http://youtu.be/${res.data[0].id}`)
+				const asize = await axios.get(`https://arugaz.my.id/api/media/ytsearch?query=http://youtu.be/${res.data[0].id}`)
 				const afsize = asize.data.filesize.replace(' MB', '')
 				console.log(afsize)
 				if (afsize >= 16.0 || asize.data.filesize.endsWith('GB')) {
@@ -867,7 +867,7 @@ module.exports = kconfig = async (kill, message) => {
 				} else {
 					await kill.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Titulo: ${res.data[0].title}\n\nDuracion: ${res.data[0].duration} segundos\n\nEsta echo: ${playre}\n\nVisualizaciones: ${res.data[0].viewCount}\n\nEspero haberlo hecho bien y ... ¡ahora solo espera! Pero evita usarlo de nuevo hasta que termine eh!`, id)
 					console.log(res.data[0].title)
-					axios.get(`http://st4rz.herokuapp.com/api/yta2?url=http://youtu.be/${res.data[0].id}`)
+					axios.get(`https://arugaz.my.id/api/media/ytaudio?url=http://youtu.be/${res.data[0].id}`)
 					.then(async(rest) => {
 						var m3pa = rest.data.result
 						var m3ti = rest.data.title
