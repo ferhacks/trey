@@ -1671,12 +1671,6 @@ module.exports = kconfig = async (kill, message) => {
             }
             break
 			
-		case 'mp3r':
-            if (args.length == 0) return kill.reply(from, 'Lo uso incorrectamente.', id)
-				await kill.sendFileFromUrl(from, `http://ytdlrest.herokuapp.com/api/play?url=${body.slice(5)}`, '', '', id)
-			break
-
-
         case 'meme':
             ark = body.trim().substring(body.indexOf(' ') + 1)
             if ((isMedia || isQuotedImage) && args.length >= 2) {
