@@ -772,13 +772,9 @@ module.exports = kconfig = async (kill, message) => {
 
          case 'mp3': // eu censurei o acesso pois as apis estão offlines, e fazer isso evita que usem o comando e te de problemas
              if (args.length == 0) return kill.reply(from, 'Lo uso incorrectamente.', id)
-            axios.get(`http://ytdlrest.herokuapp.com/api/info?url=${body.slice(5)}`)
+            axios.get(`https://arugaz.my.id/api/media/ytaudio?url=${body.slice(5)}`)
             .then(async(rest) => {
-					var m3pa = rest.info.url
-					var m3ti = rest.info.title
-					var m3tu = rest.info.thumb
-					var m3fo = rest.info.ext
-					await kill.sendFileFromUrl(from, m3tu, '', `Titulo: ${m3ti}\nFormato:${m3fo}\n\nEspero averlo echo bien, ahora espere a que el video se envie, NO LO UTILIZE OTRA VEZ!!`, id)
+					var m3pa = rest.data.result
 					await kill.sendFileFromUrl(from, m3pa, '', '', id)
                 })
 			break
