@@ -774,7 +774,7 @@ module.exports = kconfig = async (kill, message) => {
              if (args.length == 0) return kill.reply(from, 'Lo uso incorrectamente.', id)
             axios.get(`http://ytdlrest.herokuapp.com/api/info?url=${body.slice(5)}`)
             .then(async(rest) => {
-					var m3pa = rest.info.result
+					var m3pa = rest.info.url
 					var m3ti = rest.info.title
 					var m3tu = rest.info.thumb
 					var m3fo = rest.info.ext
