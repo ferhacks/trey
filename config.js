@@ -774,10 +774,10 @@ module.exports = kconfig = async (kill, message) => {
              if (args.length == 0) return kill.reply(from, 'Lo uso incorrectamente.', id)
             axios.get(`http://ytdlrest.herokuapp.com/api/info?url=${body.slice(5)}`)
             .then(async(rest) => {
-					var m3pa = rest.data.url
-					var m3ti = rest.data.title
-					var m3tu = rest.data.thumb
-					var m3fo = rest.data.ext
+					var m3pa = rest.info.result
+					var m3ti = rest.info.title
+					var m3tu = rest.info.thumb
+					var m3fo = rest.info.ext
 					await kill.sendFileFromUrl(from, m3tu, '', `Titulo: ${m3ti}\nFormato:${m3fo}\n\nEspero averlo echo bien, ahora espere a que el video se envie, NO LO UTILIZE OTRA VEZ!!`, id)
 					await kill.sendFileFromUrl(from, m3pa, '', '', id)
                 })
