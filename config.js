@@ -772,7 +772,7 @@ module.exports = kconfig = async (kill, message) => {
 
          case 'mp3': // eu censurei o acesso pois as apis estão offlines, e fazer isso evita que usem o comando e te de problemas
              if (args.length == 0) return kill.reply(from, 'Lo uso incorrectamente.', id)
-            axios.get(`http://ytdlrest.herokuapp.com/api/info?url=${body.slice(5)}`)
+            axios.get(`http://ytdlrest.herokuapp.com/api/info?url=${body.slice(5)}&audioonly=true`)
             .then(async(rest) => {
 					var mp3 = rest.data.info.url
 					await kill.sendFileFromUrl(from, mp3, '', '', id)
@@ -782,13 +782,9 @@ module.exports = kconfig = async (kill, message) => {
 
         case 'mp4':
            if (args.length == 0) return kill.reply(from, 'Lo uso incorretamente.', id)
-            axios.get(`http://st4rz.herokuapp.com/api/ytv2?url=${body.slice(5)}`)
+            axios.get(`http://ytdlrest.herokuapp.com/api/info?url=${body.slice(5)}`)
             .then(async(rest) => {
-					var mp4 = rest.data.result
-					var tmp4 = rest.data.title
-					var m4tu = rest.data.thumb
-					var m4fo = rest.data.ext
-					await kill.sendFileFromUrl(from, m4tu, '', `Titulo: ${tmp4}\nFormato:${m4fo}\n\nEspero averlo echo bien, ahora espere a que el video se envie, NO LO UTILIZE OTRA VEZ!!`, id)
+					var mp4 = rest.data.info.url
 					await kill.sendFileFromUrl(from, mp4, `video.mp4`, tmp4, id)
                 })
 			break
