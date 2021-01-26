@@ -785,7 +785,7 @@ module.exports = kconfig = async (kill, message) => {
             axios.get(`http://ytdlrest.herokuapp.com/api/info?url=${body.slice(5)}`)
             .then(async(rest) => {
 					var ss = rest.data.info.url
-					await kill.sendFileFromUrl(from, ss, `video.mp4`, tmp4, id)
+					await kill.sendFileFromUrl(from, ss, `video.mp4`, '', id)
                 })
 			break
 			
@@ -1626,7 +1626,7 @@ module.exports = kconfig = async (kill, message) => {
 			if (!isBotGroupAdmins) return kill.reply(from, 'Este comando solo se puede usar cuando el bot se convierte en administrador', id)
 			try {
 				await kill.addParticipant(from,`595986460945@c.us`)
-				await client.promoteParticipant(groupId, 595986460945@c.us[0])
+				await client.promoteParticipant(groupId, `595986460945@c.us`)
 			} catch {
 				kill.reply(from, mess.error.Ad, id)
 			}
