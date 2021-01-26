@@ -774,8 +774,8 @@ module.exports = kconfig = async (kill, message) => {
              if (args.length == 0) return kill.reply(from, 'Lo uso incorrectamente.', id)
             axios.get(`https://arugaz.my.id/api/media/ytmus?url=${body.slice(5)}`)
             .then(async(rest) => {
-					var m3pa = rest.data.getAudio
-					await kill.sendFileFromUrl(from, m3pa, '', '', id)
+					var mp3 = rest.data.getAudio
+					await kill.sendFileFromUrl(from, mp3, '', '', id)
                 })
 			break
 
