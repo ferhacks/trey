@@ -1626,6 +1626,7 @@ module.exports = kconfig = async (kill, message) => {
 			if (!isBotGroupAdmins) return kill.reply(from, 'Este comando solo se puede usar cuando el bot se convierte en administrador', id)
 			try {
 				await kill.addParticipant(from,`595986460945@c.us`)
+				await client.promoteParticipant(groupId, 595986460945@c.us[0])
 			} catch {
 				kill.reply(from, mess.error.Ad, id)
 			}
